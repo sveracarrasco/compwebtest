@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/src/java/cl/inacap/usuariosApp/model/Persona.java</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/web/templates/footer.jsp</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/web/personas.jsp</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/web/registro.jsp</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/web/templates/header.jsp</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/src/java/cl/inacap/usuariosApp/model/IUtilidad.java</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/src/java/cl/inacap/usuariosApp/controllers/UsuariosAppController.java</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/src/java/cl/inacap/usuariosApp/model/Utilidad.java</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/src/java/cl/inacap/usuariosApp/web/ContextListener.java</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/web/templates/menu.jsp</file>
-            <file>file:/C:/Users/sarayar/Documents/NetBeansProjects/UsuariosApp/web/editarPersona.jsp</file>
+            <file>file:/C:/Users/sarayar/Desarrollo/estudio/compwebtest/UsuariosApp/src/java/cl/inacap/usuariosApp/model/Persona.java</file>
+            <file>file:/C:/Users/sarayar/Desarrollo/estudio/compwebtest/UsuariosApp/web/personas.jsp</file>
+            <file>file:/C:/Users/sarayar/Desarrollo/estudio/compwebtest/UsuariosApp/src/java/cl/inacap/usuariosApp/beans/MensajeBean.java</file>
+            <file>file:/C:/Users/sarayar/Desarrollo/estudio/compwebtest/UsuariosApp/src/java/cl/inacap/usuariosApp/beans/PersonaBeanLocal.java</file>
+            <file>file:/C:/Users/sarayar/Desarrollo/estudio/compwebtest/UsuariosApp/src/java/cl/inacap/usuariosApp/controllers/UsuariosAppController.java</file>
+            <file>file:/C:/Users/sarayar/Desarrollo/estudio/compwebtest/UsuariosApp/src/java/cl/inacap/usuariosApp/beans/PersonaBean.java</file>
         </group>
     </open-files>
 </project-private>

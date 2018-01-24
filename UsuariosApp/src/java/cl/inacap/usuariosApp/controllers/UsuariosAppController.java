@@ -8,11 +8,19 @@ package cl.inacap.usuariosApp.controllers;
 import cl.inacap.usuariosApp.beans.PersonaBeanLocal;
 import cl.inacap.usuariosApp.model.Persona;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.inject.Inject;
+import javax.jms.Connection;
+import javax.jms.JMSException;
+import javax.jms.MapMessage;
+import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +36,11 @@ public class UsuariosAppController extends HttpServlet {
 
     @EJB
     private PersonaBeanLocal personaBean;
+
+    @Resource(mappedName = "jms/QueueFactory")
+    private QueueConnectionFactory factory;
+    @Resource(mappedName = "jms/Queue")
+    private Queue queue;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -191,6 +204,7 @@ public class UsuariosAppController extends HttpServlet {
             persona.setMail(correo);
 
             String msg = this.personaBean.agregarPersona(persona);
+            this.enviarMensaje(msg);
             request.setAttribute("msg", msg);
             request.getRequestDispatcher("registro.jsp").forward(request,
                     response);
@@ -200,6 +214,20 @@ public class UsuariosAppController extends HttpServlet {
                     response);
         }
 
+    }
+
+    private void enviarMensaje(String msg) {
+
+        try (Connection conex = this.factory.createConnection();
+                Session sesion = conex.createSession(false,
+                        Session.AUTO_ACKNOWLEDGE);
+                MessageProducer msgp = sesion.createProducer(queue)) {
+            MapMessage mensaje = sesion.createMapMessage();
+            mensaje.setString("msg", msg);
+            msgp.send(mensaje);
+        } catch (JMSException ex) {
+            log("Error : " + ex.getMessage());
+        }
     }
 
     private void mostrarEditarPersona(String rut, HttpServletRequest request, HttpServletResponse response)
