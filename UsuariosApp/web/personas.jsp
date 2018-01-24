@@ -1,3 +1,5 @@
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="cl.inacap.usuariosApp.beans.PersonaBeanLocal"%>
 <%@include file="templates/header.jsp" %>
 <div class="row">
     <c:if test="${sessionScope.usuario.perfil.equals('Admin') }">
@@ -16,7 +18,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${applicationScope.personas}" var="persona">
+                        <%! private PersonaBeanLocal service; %>
+                        <%
+                            InitialContext ctx = new InitialContext();
+                            service = (PersonaBeanLocal) ctx.lookup("java:global/UsuariosApp/PersonaBean!cl.inacap.usuariosApp.beans.PersonaBeanLocal");
+                            
+                            %>
+                            <c:set scope="page" var="personas" value="<%=service.getPersonaList()%>" ></c:set>    
+                            <c:forEach items="${pageScope.personas}" var="persona">
                             <tr>
                                 <td>${persona.rut}</td>
                                 <td>${persona.nombre}</td>
