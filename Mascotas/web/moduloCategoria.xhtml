@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:panelGroup layout="block" styleClass="col l8 m6 s12 offset-l2 offset-m3 z-depth-3">
+        <h:panelGroup layout="block" styleClass="row">
+            <h:panelGroup layout="block" styleClass="col l9 m12 s12">
+                <h:commandButton value="Nueva Categoría" styleClass="btn blue lighten-3 right"
+                                 actionListener="#{categoriasBean.limpiarForm()}"
+                                 />
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass='#{categoriasBean.mensaje eq ""?"hide": ""} red darken-3 white-text' >
+            <h5>#{categoriasBean.mensaje}</h5>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="row">
+            <h:panelGroup layout="block" styleClass="col l8 offset-l1 m6 offset-m2 s12">
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="input-field col s6">
+                        <h:inputText id="nombre" value="#{categoriasBean.nombre}" styleClass="validate" />
+                        <label for="nombre">Nombre</label>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+
+                    <h:panelGroup layout="block" styleClass="col l12 s12 m12  center-align">
+                        <h:commandButton value="#{categoriasBean.btnAccion}" styleClass="btn waves-light waves-effect" actionListener="#{categoriasBean.actuar()}"></h:commandButton>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:dataTable value="#{categoriasBean.categorias}" var="categoria" >
+
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Número</f:facet>
+                <!-- row record -->
+                #{categoria.idCategoria}
+            </h:column>
+
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Nombre</f:facet>
+                <!-- row record -->
+                #{categoria.nombreCategoria}
+            </h:column>
+            <h:column >
+                <f:facet name="header">Editar</f:facet>
+                <h:commandButton value="Editar" styleClass="btn blue darken-1" actionListener="#{categoriasBean.editar(categoria)}"></h:commandButton>
+            </h:column>
+
+        </h:dataTable>
+    </h:panelGroup>
+</ui:composition>
