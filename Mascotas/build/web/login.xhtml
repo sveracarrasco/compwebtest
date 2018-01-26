@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:panelGroup layout="block" styleClass='#{sesionUsuarioBean.mensaje eq ""?"hide": ""} blue darken-3 white-text' >
+        <h5>#{sesionUsuarioBean.mensaje}</h5>
+    </h:panelGroup>
+    <h:panelGroup layout="block" styleClass="row">
+        <h:panelGroup layout="block" styleClass="col l6 offset-l3 m7 offset-m2 s12 z-depth-3">
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="input-field col s6">
+                    <h:inputText  value="#{sesionUsuarioBean.nombre}" styleClass="validate" />
+                    <label for="usuario">Usuario</label>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="input-field col s6">
+                    <h:inputText  value="#{sesionUsuarioBean.clave}" styleClass="validate" />
+                    <label for="usuario">Clave</label>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+
+                <h:panelGroup layout="block" styleClass="col l12 s12 m12  center-align">
+                    <h:commandButton value="Iniciar Sesión" styleClass="btn waves-light waves-effect purple darken-4" actionListener="#{sesionUsuarioBean.login()}"></h:commandButton>
+                </h:panelGroup>
+
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+</ui:composition>

@@ -3,16 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cl.inacap.usuariosApp.model;
+package cl.inacap.mascotas.model;
 
 import java.util.List;
+import javax.ejb.Local;
 
 /**
  *
  * @author sarayar
  */
+@Local
+public interface CategoriasDAOLocal extends DAOServiceLocal{
 
-public interface IUtilidad {
-    public Persona loguear(String rut, String clave, List<Persona> personas);
-    public Persona buscar(String rut, List<Persona> personas);
+    public List<Categoria> getCategorias();
+
+
+    public Categoria obtener(int id);
+
 }

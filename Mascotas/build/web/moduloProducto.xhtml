@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <h:panelGroup layout="block" styleClass="col l8 m6 s12 offset-l2 offset-m3 z-depth-3">
+        <h:panelGroup layout="block" styleClass="row">
+            <h:panelGroup layout="block" styleClass="col l9 m12 s12">
+                <h:commandButton value="Nuevo Producto" styleClass="btn blue lighten-3 right"
+                                 actionListener="#{productosBean.limpiarForm()}"
+                                 />
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass='#{productosBean.mensaje eq ""?"hide": ""} red darken-3 white-text' >
+            <h5>#{productosBean.mensaje}</h5>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="row">
+            <h:panelGroup layout="block" styleClass="col l8 offset-l1 m6 offset-m2 s12">
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="input-field col s6">
+                        <h:selectOneMenu value="#{productosBean.idCategoriaSeleccionada}" >
+                            <f:selectItems value="#{productosBean.categorias}" var="cat"
+                                           itemValue="#{cat.idCategoria}" itemLabel="#{cat.nombreCategoria}" /> 
+                        </h:selectOneMenu> 
+                        <label for="categoria">Categoría</label>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="input-field col s6">
+                        <h:inputText  value="#{productosBean.nombre}" styleClass="validate" />
+                        <label for="nombre">Nombre</label>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="input-field col s6">
+                        <h:inputText  value="#{productosBean.precio}" styleClass="validate" />
+                        <label for="precio">Precio</label>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="input-field col s6">
+                        <h:inputText  value="#{productosBean.unidades}" styleClass="validate" />
+                        <label for="unidades">Unidades</label>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="input-field col s6">
+                        <h:inputTextarea  value="#{productosBean.descripcion}" styleClass="validate materialize-textarea" />
+
+                        <label for="nombre">Descripción</label>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup styleClass="file-field input-field">
+                        <h:panelGroup styleClass="btn">
+                            <span>Foto</span>
+                            <h:inputFile value="#{productosBean.archivo}" /> 
+                        </h:panelGroup>
+                        <h:panelGroup class="file-path-wrapper">
+                            <input class="file-path validate" type="text" />
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+
+                    <h:panelGroup layout="block" styleClass="col l12 s12 m12  center-align">
+                        <h:commandButton value="#{productosBean.btnAccion}" styleClass="btn waves-light waves-effect" actionListener="#{productosBean.actuar()}"></h:commandButton>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:dataTable value="#{productosBean.productos}" var="producto" >
+
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Número</f:facet>
+                <!-- row record -->
+                #{producto.idProducto}
+            </h:column>
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Foto</f:facet>
+                <!-- row record -->
+
+                <h:graphicImage styleClass="materialboxed" width="50" value="#{productosBean.getImagen(producto)}" />
+            </h:column>
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Nombre</f:facet>
+                <!-- row record -->
+                #{producto.nombreProducto}
+            </h:column>
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Categoría</f:facet>
+                <!-- row record -->
+                #{producto.categoria.nombreCategoria}
+            </h:column>
+
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Precio</f:facet>
+                <!-- row record -->
+                #{producto.precioProducto}
+            </h:column>
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header">Unidades</f:facet>
+                <!-- row record -->
+                #{producto.unidadesProducto}
+            </h:column>
+            <h:column >
+                <f:facet name="header">Editar</f:facet>
+                <h:commandButton value="Editar" styleClass="btn blue darken-1" actionListener="#{productosBean.editar(producto)}"></h:commandButton>
+            </h:column>
+
+        </h:dataTable>
+    </h:panelGroup>
+</ui:composition>
