@@ -14,12 +14,21 @@
                         <img src="img/logo2.png"  class="logo" /> </a>
                 </div>
             </div>
-
+            <h:panelGroup rendered="#{sesionUsuarioBean.usuario.perfil.nombrePerfil eq 'administrador'}">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><h:commandLink actionListener="#{navegacionBean.navegar('ventas')}"   value="Ventas" /></li>
                     <li><h:commandLink actionListener="#{navegacionBean.navegar('productos')}" value="Productos" /></li>
                     <li><h:commandLink actionListener="#{navegacionBean.navegar('categorias')}" value="Categorias" /></li>
+                    <li><h:commandLink actionListener="#{sesionUsuarioBean.editarDatos()}" value="Mis Datos" /></li>
+                    <li><h:commandLink actionListener="#{sesionUsuarioBean.cerrarSesion()}" value="Cerrar Sesión" /></li>
                 </ul>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{!sesionUsuarioBean.usuario.perfil.nombrePerfil.equals('administrador')}">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><h:commandLink actionListener="#{sesionUsuarioBean.editarDatos()}" value="Mis Datos" /></li>
+                    <li><h:commandLink actionListener="#{sesionUsuarioBean.cerrarSesion()}" value="Cerrar Sesión" /></li>
+                </ul>
+            </h:panelGroup>
         </div>
     </nav>
 

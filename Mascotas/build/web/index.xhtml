@@ -21,20 +21,28 @@
 
         <h:body>
             <h:form  enctype="multipart/form-data" >
-                <ui:include src="templates/header.xhtml"></ui:include>
-                <h:panelGroup styleClass="container" layout="block">
-                    <h:panelGroup layout="block" rendered="#{navegacionBean.ventanaActual eq 'categorias'}">
-                        <ui:include  src="moduloCategoria.xhtml"  />
-                    </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{sesionUsuarioBean.usuario == null}">
+                    <ui:include src="login.xhtml" />
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{sesionUsuarioBean.usuario != null}">
+                    <ui:include src="templates/header.xhtml"></ui:include>
+                    <h:panelGroup styleClass="container" layout="block">
 
-                    <h:panelGroup layout="block" rendered="#{navegacionBean.ventanaActual eq 'ventas'}">
-                        <ui:include  src="moduloVenta.xhtml"  />
-                    </h:panelGroup>
-                    <h:panelGroup layout="block" rendered="#{navegacionBean.ventanaActual eq 'productos'}">
-                        <ui:include  src="moduloProducto.xhtml"  />
+                        <h:panelGroup layout="block" rendered="#{navegacionBean.ventanaActual eq 'categorias'}">
+                            <ui:include  src="moduloCategoria.xhtml"  />
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block" rendered="#{navegacionBean.ventanaActual eq 'ventas'}">
+                            <ui:include  src="moduloVenta.xhtml"  />
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" rendered="#{navegacionBean.ventanaActual eq 'productos'}">
+                            <ui:include  src="moduloProducto.xhtml"  />
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" rendered="#{navegacionBean.ventanaActual eq 'misDatos'}">
+                            <ui:include  src="moduloMisDatos.xhtml"  />
+                        </h:panelGroup>
                     </h:panelGroup>
                 </h:panelGroup>
-
             </h:form>
 
         </h:body>

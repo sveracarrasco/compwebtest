@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">     
+
+    <h:panelGroup layout="block" styleClass='#{sesionUsuarioBean.errores.size() != 0} red darken-3 white-text' >
+        <ul>
+            <ui:repeat value="#{sesionUsuarioBean.errores}" var="error">
+                <li>#{error}</li>
+            </ui:repeat>
+        </ul>
+    </h:panelGroup>
+    <h:panelGroup layout="block" styleClass='#{sesionUsuarioBean.mensajeEdit eq ""?"hide": ""} blue darken-3 white-text' >
+        <h5>#{sesionUsuarioBean.mensajeEdit}</h5>
+    </h:panelGroup>
+    <h:panelGroup layout="block" styleClass="row">
+        <h:panelGroup layout="block" styleClass="col l8 offset-l1 m6 offset-m2 s12">
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="input-field col s6">
+                    <h:inputText value="#{sesionUsuarioBean.correo}" styleClass="validate" />
+                    <label for="correo">Correo</label>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="input-field col s6">
+                    <h:inputSecret value="#{sesionUsuarioBean.clave}" styleClass="validate" />
+                    <label for="clave">Clave</label>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="input-field col s6">
+                    <h:inputSecret value="#{sesionUsuarioBean.claveRep}" styleClass="validate" />
+                    <label for="clave">Confirme Clave</label>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+
+                <h:panelGroup layout="block" styleClass="col l12 s12 m12  center-align">
+                    <h:commandButton value="Actualizar Datos" styleClass="btn waves-light waves-effect" actionListener="#{sesionUsuarioBean.actualizar()}"></h:commandButton>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+</ui:composition>
